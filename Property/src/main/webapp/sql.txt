@@ -1,0 +1,42 @@
+CREATE DATABASE `survey`;
+
+CREATE TABLE `survey`.`surveys` (
+  `surveys_id` int(11) NOT NULL,
+  `isopen` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`surveys_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `survey`.`questions` (
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` varchar(250) NOT NULL,
+  `question_name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `survey`.`offered_answer` (
+  `offered_answer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(500) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`offered_answer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `survey`.`question_offered_answer` (
+  `question_id` int(11) NOT NULL,
+  `offered_answer_id` int(11) NOT NULL,
+  PRIMARY KEY (`question_id`,`offered_answer_id`),
+  KEY `offered_answer_id_idx` (`offered_answer_id`),
+  CONSTRAINT `offered_answer_id` FOREIGN KEY (`offered_answer_id`) REFERENCES `offered_answer` (`offered_answer_id`),
+  CONSTRAINT `question_id` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `survey`.`answer` (
+  `answer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `question_id` int(11) DEFAULT NULL,
+  `answer_text` varchar(500) DEFAULT NULL,
+  `surveys_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`answer_id`),
+  KEY `question_id_idx` (`question_id`),
+  KEY `surveys_id_idx` (`surveys_id`),
+  CONSTRAINT `question_id_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`),
+  CONSTRAINT `surveys_id` FOREIGN KEY (`surveys_id`) REFERENCES `surveys` (`surveys_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
