@@ -40,3 +40,8 @@ CREATE TABLE `survey`.`answer` (
   CONSTRAINT `question_id_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`),
   CONSTRAINT `surveys_id` FOREIGN KEY (`surveys_id`) REFERENCES `surveys` (`surveys_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+http://www.examsmyantra.com/article/110/javaee/responsive-jsf-page-with-bootstrap-framework
+
+https://www.journaldev.com/7252/jsf-authentication-login-logout-database-example
