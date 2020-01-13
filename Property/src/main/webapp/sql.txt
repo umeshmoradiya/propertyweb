@@ -45,3 +45,5 @@ CREATE TABLE `survey`.`answer` (
 http://www.examsmyantra.com/article/110/javaee/responsive-jsf-page-with-bootstrap-framework
 
 https://www.journaldev.com/7252/jsf-authentication-login-logout-database-example
+
+https://stackoverflow.com/questions/8875818/how-to-use-primefaces-pfileupload-listener-method-is-never-invoked-or-uploaded/8880083#8880083
