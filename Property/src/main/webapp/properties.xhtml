@@ -31,80 +31,9 @@
 </h:head>
 <h:body>
 	<div class="container">
-	<!-- <p:dataTable value="#{tableBean.allProperties}" var="item"
-		paginator="true" rows="5"
-		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-		rowsPerPageTemplate="3,5,10" widgetVar="propertiesTable1"
-		style="width: 100%;" filteredValue="#{dtableBean.allProperties}">
+	
 
-		<f:facet name="header">
-			<p:outputPanel>
-				<h:outputText value="Search all fields:" />
-				<p:inputText id="globalFilter"
-					onkeyup="PF('propertiesTable1').filter()" style="width:150px"
-					placeholder="Enter keyword" />
-			</p:outputPanel>
-		</f:facet>
-
-		<f:facet name="header">
-			<h:outputText value="Image showing from database" />
-		</f:facet>
-		<p:column>
-			<f:facet name="header">
-				<h:outputText value="Title" />
-			</f:facet>
-			<h:outputText value="#{item.propertyTitle}" />
-		</p:column>
-		<p:column>
-			<f:facet name="header">
-				<h:outputText value="Description" />
-			</f:facet>
-			<h:outputText value="#{item.description}" />
-		</p:column>
-		<p:column>
-			<f:facet name="header">
-				<h:outputText value="Type" />
-			</f:facet>
-			<h:outputText value="#{item.propertyType}" />
-		</p:column>
-		<p:column>
-			<f:facet name="header">
-				<h:outputText value="Image" />
-			</f:facet>
-			<h:outputLink value="DisplayImage?Image_id=#{item.propertyId}"
-				target="_blank">
-				<h:graphicImage value="DisplayImage?Image_id=#{item.propertyId}"
-					width="50" height="50"></h:graphicImage>
-			</h:outputLink>
-
-		</p:column>
-	</p:dataTable>-->
-
-	<h:form>
-		<!--<p:dataScroller value="#{tableBean.allProperties}" var="item"
-			chunkSize="10">
-			<f:facet name="header">
-            Scroll Down to Load More
-        </f:facet>
-
-			<h:panelGrid columns="2" style="width:100%"
-				columnClasses="logo,detail">
-				<p:graphicImage value="DisplayImage?Image_id=#{item.propertyId}" />
-
-				<p:outputPanel>
-					<h:panelGrid columns="2" cellpadding="5">
-						<h:outputText value="Id:" />
-						<h:outputText value="#{item.propertyTitle}" style="font-weight: bold" />
-
-						<h:outputText value="Year:" />
-						<h:outputText value="#{item.description}" style="font-weight: bold" />
-
-						<h:outputText value="Type:" />
-						<h:outputText value="#{item.propertyType}" style="font-weight: bold" />
-					</h:panelGrid>
-				</p:outputPanel>
-			</h:panelGrid>
-		</p:dataScroller> -->
+	<h:form id="form">
 		
 		<p:dataView var="item" value="#{tableBean.allProperties}" rows="12" paginator="true" rowsPerPageTemplate="6,12,16"
                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -127,13 +56,13 @@
 
                 <p:outputPanel>
                     <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Id:" />
+                        <h:outputText value="" />
                         <h:outputText value="#{item.propertyTitle}" style="font-weight: bold"/>
  
-                        <h:outputText value="Year:" />
+                        <h:outputText value="" />
                         <h:outputText value="#{item.description}" style="font-weight: bold"/>
  
-                        <h:outputText value="Color:" />
+                        <h:outputText value="" />
                         <h:outputText value="#{item.propertyType}" style="font-weight: bold"/>
                     </h:panelGrid>
                 </p:outputPanel>
