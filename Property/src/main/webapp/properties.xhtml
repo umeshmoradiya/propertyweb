@@ -26,10 +26,15 @@
 	border-bottom-color: var(- -input-border-color, #A8A8A8);
 }
 </style>
+<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="css/styles.css"></link>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<title>Image Upload</title>
 </h:head>
 <h:body>
-	<p:spacer height="20"></p:spacer>
+	<div class="container">
 	<!-- <p:dataTable value="#{tableBean.allProperties}" var="item"
 		paginator="true" rows="5"
 		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -105,5 +110,6 @@
 			</h:panelGrid>
 		</p:dataScroller>
 	</h:form>
+	</div>
 </h:body>
 </html>
