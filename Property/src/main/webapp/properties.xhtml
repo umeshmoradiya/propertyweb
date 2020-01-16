@@ -1,75 +1,134 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	 xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<style type="text/css"> 
-    /*demo*/
-    .ui-dataview-list .ui-dataview-row {
-        border-bottom: 1px solid #A8A8A8;
-        padding: 25px 10px;
-        /* with the exported variables from Nova and Luna Themes*/
-        border-bottom-color: var(--input-border-color, #A8A8A8);
-    }
- 
-    .logo {
-        width: 5%;
-    }
-    .detail {
-        width: 85%;
-        padding-left: 25px;
-    }
+	<style type="text/css">
+/*demo*/
+.ui-dataview-list .ui-dataview-row {
+	border-bottom: 1px solid #A8A8A8;
+	padding: 25px 10px;
+	/* with the exported variables from Nova and Luna Themes*/
+	border-bottom-color: var(- -input-border-color, #A8A8A8);
+}
+
+.logo {
+	width: 5%;
+}
+
+.detail {
+	width: 85%;
+	padding-left: 25px;
+}
 </style>
-<link rel="stylesheet"
+	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"></link>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-		<h:outputStylesheet name="css/primeicons.css" library="primefaces"/>
+	<h:outputStylesheet name="css/primeicons.css" library="primefaces" />
 	<title>Image Upload</title>
 </h:head>
 <h:body>
 	<div class="container">
-	
 
-	<h:form id="form">
-		
-		<p:dataView var="item" value="#{tableBean.allProperties}" rows="12" paginator="true" rowsPerPageTemplate="6,12,16"
-                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                gridIcon="pi pi-th-large" listIcon="pi pi-bars">
- 
-        <p:dataViewGridItem>
-            <p:panel header="#{item.propertyTitle}" style="text-align:center">
-                <h:panelGrid columns="1" style="width:100%">
-                    <p:graphicImage value="DisplayImage?Image_id=#{item.propertyId}" />
 
-                    <h:outputText value="#{item.propertyTitle}" />
- 
-                </h:panelGrid>
-            </p:panel>
-        </p:dataViewGridItem>
- 
-        <p:dataViewListItem>
-            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
-                <p:graphicImage value="DisplayImage?Image_id=#{item.propertyId}" />
+		<h:form id="form">
 
-                <p:outputPanel>
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="" />
-                        <h:outputText value="#{item.propertyTitle}" style="font-weight: bold"/>
- 
-                        <h:outputText value="" />
-                        <h:outputText value="#{item.description}" style="font-weight: bold"/>
- 
-                        <h:outputText value="" />
-                        <h:outputText value="#{item.propertyType}" style="font-weight: bold"/>
-                    </h:panelGrid>
-                </p:outputPanel>
-            </h:panelGrid>
-        </p:dataViewListItem>
-    </p:dataView>
-	</h:form>
+			<p:dataTable value="#{tableBean.allProperties}" var="item"
+				paginator="true" rows="5"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="3,5,10" widgetVar="propertiesTable1"
+				style="width: 100%;" filteredValue="#{tableBean.filteredProperty}">
+
+
+				<f:facet name="header">
+					<p:outputPanel>
+						<h:outputText value="Search all fields:" />
+						<h:inputText id="globalFilter"
+							onkeyup="PF('propertiesTable1').filter()" style="width:150px"
+							placeholder="Enter keyword" />
+					</p:outputPanel>
+				</f:facet>
+
+				<!-- <f:facet name="header">
+					<h:outputText value="Image showing from database" />
+				</f:facet>-->
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Image" />
+					</f:facet>
+					<h:outputLink value="DisplayImage?Image_id=#{item.propertyId}"
+						target="_blank">
+						<h:graphicImage value="DisplayImage?Image_id=#{item.propertyId}"
+							style="width:100%"></h:graphicImage>
+					</h:outputLink>
+
+				</p:column>
+				<p:column filterBy="#{item.propertyTitle}" filterStyle="display:none; visibility:hidden;">
+					<f:facet name="header">
+						<h:outputText value="Title" />
+					</f:facet>
+					<h:outputText value="#{item.propertyTitle}" />
+				</p:column>
+				<p:column filterBy="#{item.description}" filterStyle="display:none; visibility:hidden;">
+					<f:facet name="header">
+						<h:outputText value="Description" />
+					</f:facet>
+					<h:outputText value="#{item.description}" />
+				</p:column>
+				<p:column filterBy="#{item.propertyType}" filterStyle="display:none; visibility:hidden;" >
+					<f:facet name="header">
+						<h:outputText value="Type" />
+					</f:facet>
+					<h:outputText value="#{item.propertyType}" />
+				</p:column>
+				
+			</p:dataTable>
+
+
+
+			<p:dataView var="item" value="#{tableBean.allProperties}" rows="12"
+				paginator="true" rowsPerPageTemplate="6,12,16"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+				<p:dataViewGridItem>
+					<p:panel header="#{item.propertyTitle}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
+							<p:graphicImage value="DisplayImage?Image_id=#{item.propertyId}" />
+
+							<h:outputText value="#{item.propertyTitle}" />
+
+						</h:panelGrid>
+					</p:panel>
+				</p:dataViewGridItem>
+
+				<p:dataViewListItem>
+					<h:panelGrid columns="3" style="width:100%"
+						columnClasses="logo,detail">
+						<p:graphicImage value="DisplayImage?Image_id=#{item.propertyId}" />
+
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5" filterBy="#{item.propertyType}" filterStyle="display:none; visibility:hidden;">
+								<h:outputText value="Title:" />
+								<h:outputText value="#{item.propertyTitle}"
+									style="font-weight: bold" />
+
+								<h:outputText value="Description:" />
+								<h:outputText value="#{item.description}"
+									style="font-weight: bold" />
+
+								<h:outputText value="Type:" />
+								<h:outputText value="#{item.propertyType}"
+									style="font-weight: bold" />
+							</h:panelGrid>
+						</p:outputPanel>
+					</h:panelGrid>
+				</p:dataViewListItem>
+			</p:dataView>
+		</h:form>
 	</div>
 </h:body>
 </html>

@@ -11,10 +11,21 @@ public class PropertyTableBean{
 	private String propertyTitle;
     private String description;
     private String propertyType;
+    private List<PropertyTableBean> filteredProperty;
+    
+    
     
     // EFH, MFH, REH, RMH, Bungalow
     
-    public String getPropertyTitle() {
+    public List<PropertyTableBean> getFilteredProperty() {
+		return filteredProperty;
+	}
+
+	public void setFilteredProperty(List<PropertyTableBean> filteredProperty) {
+		this.filteredProperty = filteredProperty;
+	}
+
+	public String getPropertyTitle() {
 		return propertyTitle;
 	}
 
