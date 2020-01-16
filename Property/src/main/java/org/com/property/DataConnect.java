@@ -14,6 +14,7 @@ public class DataConnect {
 			String username = "root";
 			String password = "Helloroot123";
 			Connection con = DriverManager.getConnection(url, username, password);
+			con.setAutoCommit(false);
 			return con;
 		} catch (Exception ex) {
 			System.out.println("Database.getConnection() Error -->"

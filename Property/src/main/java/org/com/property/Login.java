@@ -1,6 +1,7 @@
 
 package org.com.property;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
@@ -8,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @SessionScoped
@@ -49,7 +52,7 @@ public class Login implements Serializable {
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", user);
-			return "admin";
+			return "admin.xhtml?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
@@ -64,6 +67,6 @@ public class Login implements Serializable {
 	public String logout() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
-		return "login";
+		return "login.xhtml?faces-redirect=true";
 	}
 }

@@ -46,4 +46,6 @@ http://www.examsmyantra.com/article/110/javaee/responsive-jsf-page-with-bootstra
 
 https://www.journaldev.com/7252/jsf-authentication-login-logout-database-example
 
+http://www.itcuties.com/j2ee/jsf-2-read-and-write-images-from-sql-database/
+
 https://stackoverflow.com/questions/8875818/how-to-use-primefaces-pfileupload-listener-method-is-never-invoked-or-uploaded/8880083#8880083
