@@ -12,26 +12,31 @@ import javax.faces.context.FacesContext;
 
 import org.com.property.dao.PropertyDAO;
 import org.primefaces.model.UploadedFile;
- 
-@ManagedBean 
+
+@ManagedBean
 @SessionScoped
-public class PropertyBean implements Serializable{
- 
+public class PropertyBean implements Serializable {
+
 	private static final long serialVersionUID = 8079990930068539050L;
-	
+
 	private String propertyTitle;
-    private String description;
-    private String propertyType;
-    
-    // EFH, MFH, REH, RMH, Bungalow
- 
-    
-    public String createStudentForm() {
-        System.out.println("Reading Student Details - Name: " + propertyTitle + " " + description + ", Standard: " + propertyType);
-        return "output";
-    }
-    
-    public String getPropertyTitle() {
+	private String description;
+	private String propertyType;
+	private UploadedFile file;
+
+	// EFH, MFH, REH, RMH, Bungalow
+	private static Map<String, Object> propertyTypeMap;
+	
+	static {
+		propertyTypeMap = new LinkedHashMap<String, Object>();
+		propertyTypeMap.put("EFH", "EFH"); // label, value
+		propertyTypeMap.put("MFH", "MFH");
+		propertyTypeMap.put("REH", "REH");
+		propertyTypeMap.put("RMH", "RMH");
+		propertyTypeMap.put("Bungalow", "Bungalow");
+	}
+
+	public String getPropertyTitle() {
 		return propertyTitle;
 	}
 
@@ -54,61 +59,40 @@ public class PropertyBean implements Serializable{
 	public void setPropertyType(String propertyType) {
 		this.propertyType = propertyType;
 	}
-	
-	// EFH, MFH, REH, RMH, Bungalow
-	private static Map<String,Object> propertyTypeMap;
-	static{
-		propertyTypeMap = new LinkedHashMap<String,Object>();
-		propertyTypeMap.put("EFH", "EFH"); //label, value
-		propertyTypeMap.put("MFH", "MFH");
-		propertyTypeMap.put("REH", "REH");
-		propertyTypeMap.put("RMH", "RMH");
-		propertyTypeMap.put("Bungalow", "Bungalow");
-	}
-	
-	public Map<String,Object> getPropertyTypeMap() {
+
+	public Map<String, Object> getPropertyTypeMap() {
 		return propertyTypeMap;
 	}
 
-	private UploadedFile file;
-	 
-    public UploadedFile getFile() {
-        return file;
-    }
- 
-    public void setFile(UploadedFile file) {
-        this.file = file;
-    }
- 
-    public String upload() {
-        
-        if (file != null) {
-            try {
-                System.out.println(file.getFileName());
-                InputStream fin2 = file.getInputstream();
-                
-                PropertyDAO.storeProperty(propertyTitle, description, propertyType, fin2);
-                
-                System.out.println("Inserting Successfully! : " +file.getFileName().toString() );
-                
-               // FacesMessage msg = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
-                System.out.println("Reading Student Details - Name: " + propertyTitle + " " + description + ", Standard: " + propertyType);
-                
-                //FacesContext.getCurrentInstance().addMessage(null, msg);
- 
-                setDescription(null);
-                setPropertyTitle(null);
-                
-            } catch (Exception e) {
-                System.out.println("Exception-File Upload." + e.getMessage());
-            }
-        }
-        else{
-        FacesMessage msg = new FacesMessage("Please select image!!");
-                FacesContext.getCurrentInstance().addMessage(null, msg);
-        }
-        
-        return null;
-    }
-	
+	public UploadedFile getFile() {
+		return file;
+	}
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
+
+	public String upload() {
+
+		if (file != null) {
+			try {
+				System.out.println(file.getFileName());
+				InputStream fin = file.getInputstream();
+
+				PropertyDAO.storeProperty(propertyTitle, description, propertyType, fin);
+
+				setDescription(null);
+				setPropertyTitle(null);
+
+			} catch (Exception e) {
+				System.out.println("Exception-File Upload." + e.getMessage());
+			}
+		} else {
+			FacesMessage msg = new FacesMessage("Please select image!!");
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		}
+
+		return null;
+	}
+
 }
