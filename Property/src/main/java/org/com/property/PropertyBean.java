@@ -72,6 +72,7 @@ public class PropertyBean implements Serializable {
 		this.file = file;
 	}
 
+	// On click of submit button upload function will be called
 	public String upload() {
 
 		if (file != null) {
@@ -81,6 +82,7 @@ public class PropertyBean implements Serializable {
 
 				PropertyDAO.storeProperty(propertyTitle, description, propertyType, fin);
 
+				// After storing the date clear the form fields
 				setDescription(null);
 				setPropertyTitle(null);
 

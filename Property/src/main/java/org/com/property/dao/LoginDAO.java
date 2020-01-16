@@ -21,7 +21,7 @@ public class LoginDAO {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
-				//result found, means valid inputs
+				//result found, means valid admin user and password
 				return true;
 			}
 		} catch (SQLException ex) {

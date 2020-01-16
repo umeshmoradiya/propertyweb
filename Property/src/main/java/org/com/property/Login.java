@@ -1,7 +1,6 @@
 
 package org.com.property;
 
-import java.io.InputStream;
 import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.com.property.dao.LoginDAO;
 import org.com.property.session.SessionUtils;
-import org.primefaces.model.UploadedFile;
 
 @ManagedBean
 @SessionScoped
@@ -48,10 +46,11 @@ public class Login implements Serializable {
 		this.user = user;
 	}
 
-	//validate login
+	//validate login of admin
 	public String validateUsernamePassword() {
 		boolean valid = LoginDAO.validate(user, pwd);
 		if (valid) {
+			// Store logged in user data into the session
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", user);
 			return "admin.xhtml?faces-redirect=true";
@@ -63,6 +62,10 @@ public class Login implements Serializable {
 							"Please enter correct username and Password"));
 			return "login";
 		}
+	}
+	
+	public String showProperty() {
+		return "/properties.xhtml?faces-redirect=true";
 	}
 
 	//logout event, invalidate session

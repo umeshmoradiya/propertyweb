@@ -37,11 +37,13 @@ public class PropertyDAO {
 	}
 
 	public static List<PropertyTableBean> getProperties() {
+		
 		List<PropertyTableBean> propertyList = new ArrayList<PropertyTableBean>();
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs;
+		
 		try {
 			con = DataConnect.getConnection();
 			ps = con.prepareStatement("select * from property.propertydata order by id");
@@ -65,12 +67,12 @@ public class PropertyDAO {
 	}
 
 	public static byte[] getPropertyImage(String imageId) {
-		List<PropertyTableBean> propertyList = new ArrayList<PropertyTableBean>();
-
+		
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs;
 		byte[] imageBytes = null;
+		
 		try {
 			con = DataConnect.getConnection();
 			ps = con.prepareStatement("select * from property.propertydata where id=" + imageId);
