@@ -1,5 +1,5 @@
 
-package org.com.property;
+package org.com.property.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

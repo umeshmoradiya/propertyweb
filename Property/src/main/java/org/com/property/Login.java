@@ -10,6 +10,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.com.property.dao.LoginDAO;
+import org.com.property.session.SessionUtils;
 import org.primefaces.model.UploadedFile;
 
 @ManagedBean

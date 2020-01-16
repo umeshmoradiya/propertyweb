@@ -3,6 +3,8 @@ package org.com.property;
 import java.util.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import org.com.property.dao.PropertyDAO;
  
 @ManagedBean(name="tableBean")
 @SessionScoped

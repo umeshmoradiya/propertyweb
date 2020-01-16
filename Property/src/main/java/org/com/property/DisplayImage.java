@@ -4,6 +4,8 @@ import java.sql.*;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import org.com.property.dao.PropertyDAO;
  
 public class DisplayImage extends HttpServlet {
     private static final long serialVersionUID = 4593558495041379082L;

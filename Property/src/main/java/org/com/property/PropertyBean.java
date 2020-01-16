@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.com.property.dao.PropertyDAO;
 import org.primefaces.model.UploadedFile;
  
 @ManagedBean 

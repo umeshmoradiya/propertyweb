@@ -1,5 +1,5 @@
 
-package org.com.property;
+package org.com.property.dao;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.com.property.PropertyTableBean;
 
 public class PropertyDAO {
 

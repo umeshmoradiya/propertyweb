@@ -1,5 +1,5 @@
 
-package org.com.property;
+package org.com.property.session;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;

@@ -1,5 +1,5 @@
 
-package org.com.property;
+package org.com.property.filter;
 
 import java.io.IOException;
 
