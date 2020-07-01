@@ -1,2 +1,5 @@
 List of Properties => http://localhost:8080/Property/properties.xhtml
 Admin page => http://localhost:8080/Property/admin.xhtml
+User = admin
+Password = admin
+
